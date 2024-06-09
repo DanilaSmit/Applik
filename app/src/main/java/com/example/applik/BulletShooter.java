@@ -21,22 +21,13 @@ public class BulletShooter  {
     }
 
     public void fireBullet(float x, float y, int xbul, int ybul) {
-        // Создаем новую ImageView для пули
         ImageView bulletView = new ImageView(context);
         bulletView.setImageResource(R.drawable.bullet);
-        // Установите ресурс картинки пули
-        bulletView.setLayoutParams(new FrameLayout.LayoutParams(xbul, ybul)); // Установите размер пули
-
+        bulletView.setLayoutParams(new FrameLayout.LayoutParams(xbul, ybul));
         bulletView.setX(x);
         bulletView.setY(y);
-
-        // Добавляем пулю в список пуль
         bulletList.add(bulletView);
-
-        // Добавляем пулю на экран
         previewContainer.addView(bulletView);
-
-        // Анимируем движение пули
         ObjectAnimator animator = ObjectAnimator.ofFloat(bulletView, "y", bulletView.getY(), -previewContainer.getHeight());
         animator.setDuration(1000);
         animator.setInterpolator(new LinearInterpolator());
@@ -47,7 +38,6 @@ public class BulletShooter  {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                // Удаляем пулю из списка пуль и из экрана
                 bulletList.remove(bulletView);
                 previewContainer.removeView(bulletView);
             }
@@ -62,8 +52,6 @@ public class BulletShooter  {
         });
         animator.start();
     }
-
-
     public float getBulletX(int index) {
         if (index >= 0 && index < bulletList.size()) {
             return bulletList.get(index).getX();
