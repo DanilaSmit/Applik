@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         gunView.setX(0);
         gunView.setY(1520);
         checkBulletHitsDron();
-        checkBulletHitsDron2();
+        checkBulletHitsUfo();
         countView.setText(" Сбито целей = " + count);
 
     }
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         return false;
     }
-    private boolean checkBulletHitsDron2() {
+    private boolean checkBulletHitsUfo() {
         FrameLayout parentView = (FrameLayout) ufoView.getParent();
         if (parentView != null) {
             for (ImageView bullet : bulletList) {
